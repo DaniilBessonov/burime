@@ -1,0 +1,60 @@
+<html>
+	<head>
+		<script src='starts.js'></script>
+		<script src="../js/jquery-3.0.0.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/styles.css">
+		<title>Создать игру</title>
+		<style>
+			td { border:none }
+		</style>
+	</head>
+	<body>
+		<center>
+			<h1>Создать игру</h1>
+			<table>
+				<tr>
+					<td>
+					Тема вашей игры:
+					</td>
+					<td>
+					<input id="topic">
+					</input>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					Колличество игроков:
+					</td>
+					<td>
+					<input id="players_count">
+					</input>
+					</td>
+				</tr>
+					<td>
+					Колличество ходов на 1 игрока:
+					</td>
+					<td>
+					<input id="turns_count">
+					</input>
+					</td>
+				</tr>
+			</table>
+			<button class="red" onclick="go('index.html')">
+				Назад
+			</button>
+			<button class="green" onclick="addGame($('#topic').val(), $('#players_count').val(), $('#turns_count').val())">
+				Создать игру
+			</button>
+		</center>
+		<script>
+				
+				function addGame(topic, players_count, turns_count) {
+					var params={topic:topic, players_count:players_count, turns_count:turns_count};
+					callAPI('addGame', params, function(result){
+						console.log("4 result from addGame", result);
+						go("wait.php?game_id="+result);	
+					});
+				}
+		</script>
+	</body>
+</html>

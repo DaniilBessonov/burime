@@ -1,0 +1,64 @@
+<html>
+	<head>
+		<script src='starts.js'></script>
+		<script src="../js/jquery-3.0.0.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/styles.css">
+		<title>Регистрация</title>
+		<style>
+
+		</style>
+	</head>
+	<body>
+		<center>
+			<h1>Регистрация</h1>
+			<table>
+				<tr>
+					<td>
+					Логин:
+					</td>
+					<td>
+					<input id="login">
+					</input>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					Пароль:
+					</td>
+					<td>
+					<input id="password">
+					</input>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					Повтор пароля:
+					</td>
+					<td>
+					<input id="passwordRepeat">
+					</input>
+					</td>
+				</tr>
+			</table>
+			<button class='green' onclick="register($('#login').val(), $('#password').val(), $('#passwordRepeat').val()); /*go('index.html')*/">
+				Готово
+			</button>
+			<br>
+			<button class='red' onclick="go('index.html')">
+				В главное меню
+			</button>
+		</center>
+		<script>
+
+				function register(login, password, password2){ 
+				if(password==password2) {
+					var params={login: login, password: password};
+					callAPI('register', params);
+					} else {
+						alert('Пароли не совпадают.');
+					}
+					//Проврка сессии или что-то подобное.
+				}
+		</script>
+	</body>
+</html>

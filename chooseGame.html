@@ -1,0 +1,44 @@
+<html>
+	<head>
+		<script src='starts.js'></script>
+		<script src="../js/jquery-3.0.0.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/styles.css">
+		<title>Присоедениться</title>
+		<style>
+			
+
+		</style>
+	</head>
+	<body>
+		<center>
+			<h1>Присоедениться</h1>
+			<h2>
+				Доступные игры:
+			</h2>
+			<table id="games">
+			</table>
+			<button class='red' onclick="go('index.html')">
+				Назад
+			</button>
+		</center>
+		<script>
+				getActiveGames();
+				
+				function getActiveGames() {
+					callAPI('getActiveGames', undefined, function(result){
+						console.log(result);
+						for (var i=0; i<result.length; i++){
+								var html = '<a href="wait.php?game_id='+result[i].id+'">'+result[i].topic+'</a>';
+								$('#games').append('<tr><td>'+html+'</td></tr>');
+							}	
+					});					
+				}
+				
+				
+				function addPlayer(game_id){
+					var params={game_id: game_id};
+					callAPI('addPlayer', params);
+				}
+		</script>
+	</body>
+</html>

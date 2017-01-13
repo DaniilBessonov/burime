@@ -1,0 +1,11 @@
+<!-- CSS стили -->
+
+.goAway { position:absolute; top:3px; right:3px; width:60px; height:60px }
+body {background:#F5FFFA }
+button {margin:10px; height:50px; font-size:25px; border:0; border-radius: 15px; outline: none;}
+button:hover { background:#A9A9A9 }
+.red { background:#FA8072 }
+.red:hover { background:#FF0000 }
+.green { background:#9ACD32 }
+.green:hover { background:#66CD00 }
+td {border:none }

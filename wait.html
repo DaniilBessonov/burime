@@ -1,0 +1,37 @@
+<html>
+	<head>
+		<script src='starts.js'></script>
+		<script src="../js/jquery-3.0.0.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/styles.css">
+		<title>Ожидание</title>
+		<style>
+
+		</style>
+	</head>
+	<body>
+		<center>
+			<h1>Ожидание</h1>
+			<h2>
+				Ожидайте своего хода...
+			</h2>
+			<table>
+				<tr id="order">
+				</tr>
+			</table>
+		</center>
+		<button class='goAway' onclick="go('index.html')">
+			Выход
+		</button>
+		<script>
+			getOrder( /*Эта игра*/);
+			
+			function getOrder(game_idparams, function(result){
+						console.log("result from getOrder", result);
+						//преобразование result в массив
+						for (var i=0; i<result.length; i++){
+							$('#order').append('<td>'+result[i]+'<td>');
+						}	
+					});
+		</script>
+	</body>
+</html>
