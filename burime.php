@@ -91,7 +91,7 @@ function b_getAllText($game_id){
 }
 
 function b_setGameFinished($game_id) {
-	$query="UPDATE `games` SET `finished`= 1 WHERE game_id=$game_id";
+	$query="UPDATE `games` SET `finished`= 1 WHERE id=$game_id";
 	$result = mysql_query($query);
 }
 
@@ -145,13 +145,13 @@ function b_isUserActive($game_id, $user_id) {
 }
 
 function b_isGameFinished($game_id) {
-	$query="SELECT finished FROM `games` WHERE game_id=$game_id";
+	$query="SELECT finished FROM `games` WHERE id=$game_id";
 	$result = mysql_query_single($query);
 	return $result!=0;
 }
 
 function b_getGameTurnCount($game_id) {
-	$query="SELECT `turns_count` FROM `games` WHERE game_id=$game_id";
+	$query="SELECT `turns_count` FROM `games` WHERE id=$game_id";
 	return mysql_query_single($query);
 }
 

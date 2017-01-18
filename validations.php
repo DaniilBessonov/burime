@@ -69,13 +69,14 @@ function addText($params) {
 	if(b_isGameFinished($game_id)) {
 		return wrong('Данная игра уже закончалась.');
 	}
-	
 	b_addText($game_id, $text);
+	
 	
 	$minMadeTurns=b_makeTurn($game_id);
 	if($minMadeTurns==b_getGameTurnCount($game_id)) {
 		b_setGameFinished(game_id);
 	}	
+	return success('Ход сделан');
 }
 
 function addPlayer($params) {

@@ -15,10 +15,14 @@
 				Ожидайте своего хода...
 			</h2>
 			<table id="order"></table>
+		
+			<button id="intoGame" class='green' class='goAway' onclick="addPlayer(game_id)">
+				Вступить в игру
+			</button>
+			<br /><button class='red' class='goAway' onclick="go('index.html')">
+				В главное меню
+			</button>
 		</center>
-		<button class='red' class='goAway' onclick="go('index.html')">
-			Выход
-		</button>
 		<script>
 			var game_id=<?php if(isset($_GET['game_id'])) { 
 								echo $_GET['game_id']; 
@@ -48,6 +52,15 @@
 			function time() {				
 				getOrder(game_id);
 				setTimeout(time, 5000);
+			}
+			
+			function addPlayer(game_id){
+				console.log("game_id=", game_id);
+				var params={game_id: game_id};
+				callAPI('addPlayer', params, function(result){
+					alert(result);
+					$('#intoGame').css('display', 'none');
+				});
 			}
 		</script>
 	</body>
