@@ -3,17 +3,17 @@
 		<script src='starts.js'></script>
 		<script src="../js/jquery-3.0.0.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/styles.css">
-		<title>Вход</title>
+		<title>Р’С…РѕРґ</title>
 		<style>
 		</style>
 	</head>
 	<body>
 		<center>
-			<h1>Вход</h1>
+			<h1>Р’С…РѕРґ</h1>
 				<table>
 				<tr>
 					<td>
-					Логин:
+					Р›РѕРіРёРЅ:
 					</td>
 					<td>
 					<input id="login">
@@ -23,7 +23,7 @@
 				</tr>
 				<tr>
 					<td>
-					Пароль:
+					РџР°СЂРѕР»СЊ:
 					</td>
 					<td>
 					<input id="password">
@@ -31,12 +31,14 @@
 					</td>
 				</tr>
 				</table>
-			<button class='green' onclick="login($('#login').val(), $('#password').val()); go('index.html')" >
-				Готово
+				<button class="small" onclick="go('register.html')">
+					РЈ РјРµРЅСЏ РЅРµС‚ Р°РєРєР°СѓРЅС‚Р°. РЎРѕР·РґР°С‚СЊ Р°РєРєР°СѓРЅС‚
+				</button>
+			<br /><button class='green' onclick="login($('#login').val(), $('#password').val()); go('index.html')" >
+				Р“РѕС‚РѕРІРѕ
 			</button>
-			<br>
-			<button class='red' onclick="go('index.html')">
-				В главное меню
+			<br /><button class='red' onclick="go('index.html')">
+				Р’ РіР»Р°РІРЅРѕРµ РјРµРЅСЋ
 			</button>
 		</center>
 		<script>
@@ -44,7 +46,7 @@
 				function login(login, password) {
 					var params={login: login, password: password};
 					callAPI('login', params);
-					// TODO Проверка сесии или что-то подобное.
+					// TODO РџСЂРѕРІРµСЂРєР° СЃРµСЃРёРё РёР»Рё С‡С‚Рѕ-С‚Рѕ РїРѕРґРѕР±РЅРѕРµ.
 				}
 		</script>
 	</body>

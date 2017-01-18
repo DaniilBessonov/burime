@@ -9,3 +9,4 @@ button:hover { background:#A9A9A9 }
 .green { background:#9ACD32 }
 .green:hover { background:#66CD00 }
 td {border:none }
+.small { height:30px; font-size:15px; }

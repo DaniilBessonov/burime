@@ -3,18 +3,18 @@
 		<script src='starts.js'></script>
 		<script src="../js/jquery-3.0.0.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/styles.css">
-		<title>Регистрация</title>
+		<title>Р РµРіРёСЃС‚СЂР°С†РёСЏ</title>
 		<style>
 
 		</style>
 	</head>
 	<body>
 		<center>
-			<h1>Регистрация</h1>
+			<h1>Р РµРіРёСЃС‚СЂР°С†РёСЏ</h1>
 			<table>
 				<tr>
 					<td>
-					Логин:
+					Р›РѕРіРёРЅ:
 					</td>
 					<td>
 					<input id="login">
@@ -23,7 +23,7 @@
 				</tr>
 				<tr>
 					<td>
-					Пароль:
+					РџР°СЂРѕР»СЊ:
 					</td>
 					<td>
 					<input id="password">
@@ -32,7 +32,7 @@
 				</tr>
 				<tr>
 					<td>
-					Повтор пароля:
+					РџРѕРІС‚РѕСЂ РїР°СЂРѕР»СЏ:
 					</td>
 					<td>
 					<input id="passwordRepeat">
@@ -40,12 +40,14 @@
 					</td>
 				</tr>
 			</table>
-			<button class='green' onclick="register($('#login').val(), $('#password').val(), $('#passwordRepeat').val()); /*go('index.html')*/">
-				Готово
+			<button class="small" onclick="go('login.html')">
+					РЈ РјРµРЅСЏ СѓР¶Рµ РµСЃС‚СЊ Р°РєРєР°СѓРЅС‚. Р’РѕР№С‚Рё
 			</button>
-			<br>
-			<button class='red' onclick="go('index.html')">
-				В главное меню
+			<br /><button class='green' onclick="register($('#login').val(), $('#password').val(), $('#passwordRepeat').val()); /*go('index.html')*/">
+				Р“РѕС‚РѕРІРѕ
+			</button>
+			<br /><button class='red' onclick="go('index.html')">
+				Р’ РіР»Р°РІРЅРѕРµ РјРµРЅСЋ
 			</button>
 		</center>
 		<script>
@@ -55,9 +57,9 @@
 					var params={login: login, password: password};
 					callAPI('register', params);
 					} else {
-						alert('Пароли не совпадают.');
+						alert('РџР°СЂРѕР»Рё РЅРµ СЃРѕРІРїР°РґР°СЋС‚.');
 					}
-					//Проврка сессии или что-то подобное.
+					//РџСЂРѕРІСЂРєР° СЃРµСЃСЃРёРё РёР»Рё С‡С‚Рѕ-С‚Рѕ РїРѕРґРѕР±РЅРѕРµ.
 				}
 		</script>
 	</body>
