@@ -41,6 +41,20 @@ function mysql_query_single($query){
 	return null;
 }
 
+function b_getUserNameById($id){
+	$query="SELECT login FROM `users` WHERE id=$id";
+	connectDB();
+	$result = mysql_query_single($query);
+	disconnectDB();
+	return $result;
+}
+
+function getActiveUserName(){
+	$id=getUserIdFromSession();
+	$name=b_getUserNameById($id);
+	return $name;
+}
+
 function b_addGame($topic, $players_count, $turns_count) {
 	$admin_id=getUserIdFromSession();
 	$query="INSERT INTO `games`(`topic`, `admin_id`, `players_count`, `turns_count`) VALUES ('$topic', $admin_id, $players_count, $turns_count)";

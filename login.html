@@ -7,7 +7,7 @@
 		<style>
 		</style>
 	</head>
-	<body>
+	<body class="login-off login-page">
 		<center>
 			<h1>Вход</h1>
 			<br/><input id="login" placeholder="Логин">
@@ -17,7 +17,7 @@
 			<br /><button class="small" onclick="go('register.html')">
 				У меня нет аккаунта. Создать аккаунт
 			</button>
-			<br /><button class='green' onclick="login($('#login').val(), $('#password').val()); go('index.html')" >
+			<br /><button class='green' onclick="login($('#login').val(), $('#password').val());" >
 				Готово
 			</button>
 			<br /><button class='red' onclick="go('index.html')">
@@ -28,7 +28,9 @@
 				
 				function login(login, password) {
 					var params={login: login, password: password};
-					callAPI('login', params);
+					callAPI('login', params, function(){
+						go('index.html');
+					});
 					// TODO Проверка сесии или что-то подобное.
 				}
 		</script>

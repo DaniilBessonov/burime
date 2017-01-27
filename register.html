@@ -5,10 +5,10 @@
 		<link rel="stylesheet" type="text/css" href="css/styles.css">
 		<title>Регистрация</title>
 		<style>
-
+			
 		</style>
 	</head>
-	<body>
+	<body class="login-off">
 		<center>
 			<h1>Регистрация</h1>
 			<input id="login" placeholder="Логин">
@@ -34,7 +34,7 @@
 					var params={login: login, password: password};
 					callAPI('register', params);
 					} else {
-						alert('Пароли не совпадают.');
+						showError('Пароли не совпадают.');
 					}
 					//Проврка сессии или что-то подобное.
 				}

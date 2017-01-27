@@ -6,30 +6,11 @@
 		<link rel="import" href="error.html"> 
 		<title>Меню</title>
 		<style>	
-			#loginPassword { position:absolute; width:300px; height:150px; background:#FFFACD; right:5; top:5; border-radius: 50px; border: 2px ridge #F0E68C }
-			.logOrReg {  outline: none; background: #FFFACD; width:250px; border-radius: 15px; }
-			.logOrReg:hover { background:#FFE4B5 }
+			
 			h1 { font-size: 80px }
 		</style>
 	</head>
 	<body>
-		<div id="error" onclick='deliteError()'>
-			<center>
-				<h2>Ошибка!</h2>
-				<p>Ля ля ля. Все очень плохо</p>
-				<p style="font-size:13px;">Нажмите на сообщение, чтобы скрыть его</p>
-			</center>
-		</div>
-		<div id="loginPassword">
-			<center>
-				<button class='button logOrReg' onclick="go('register.html')">
-					Зарегестрироваться
-				</button>
-				<button class='button logOrReg' onclick="go('login.html')">
-					Войти
-				</button>
-			</center>
-		</div>
 		<center>
 			<h1>Буриме</h1>
 			<button class='button' onclick="go('makeGame.html')">
@@ -43,9 +24,7 @@
 			</button>
 		</center>
 		<script>
-			function deliteError(){
-	$("#error").hide(300);
-}
+	
 		</script>
 	</body>
 </html>

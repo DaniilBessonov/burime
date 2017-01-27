@@ -13,6 +13,8 @@ function login($params){
 	$password=$params->password;	
 	$userId=b_login($login, $password);
 	if( $userId==0){
+		$_SESSION['isAuthorized']=0;
+		$_SESSION['userId']=0;
 		return wrong('Авторизация не удалась', 1);
 	}else{		
 		$_SESSION['isAuthorized']=1;
@@ -21,18 +23,34 @@ function login($params){
 	};
 }
 
+function getUserName(){
+	$id=getUserIdFromSession();
+	$name=b_getUserNameById($id);
+	if($name==null){
+		return wrong('Нет такого пользователя');
+	} else {
+		return success($name);
+	}
+}
+
 function register($params){
 	$login=$params->login;
 	$password=$params->password;
 	
 	if(isLoginExist($login)){
-		return wrong('Логин занят. Регистрация не удалась.', 1);
+		return wrong('Логин занят. Регистрация не удалась.');
 	} else {
 		$userId=b_register($login, $password);
 		$_SESSION['isAuthorized']=1;
 		$_SESSION['userId']=$userId;
 		return success($userId);		
 	}
+}
+
+function logout(){
+	$_SESSION['isAuthorized']=0;
+	$_SESSION['userId']=0;
+	return success('Вы вышли из аккаунта');
 }
 
 function isLoginExist($login){
