@@ -1,8 +1,9 @@
 <html>
 	<head>
 		<script src='starts.js'></script>
-		<script src="../js/jquery-3.0.0.js"></script>
-		<link rel="stylesheet" type="text/css" href="css/styles.css">		
+		<script src="js/jquery-3.0.0.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/styles.css">	
+		<link rel="import" href="error.html"> 
 		<title>Меню</title>
 		<style>	
 			#loginPassword { position:absolute; width:300px; height:150px; background:#FFFACD; right:5; top:5; border-radius: 50px; border: 2px ridge #F0E68C }
@@ -12,6 +13,13 @@
 		</style>
 	</head>
 	<body>
+		<div id="error" onclick='deliteError()'>
+			<center>
+				<h2>Ошибка!</h2>
+				<p>Ля ля ля. Все очень плохо</p>
+				<p style="font-size:13px;">Нажмите на сообщение, чтобы скрыть его</p>
+			</center>
+		</div>
 		<div id="loginPassword">
 			<center>
 				<button class='button logOrReg' onclick="go('register.html')">
@@ -35,7 +43,9 @@
 			</button>
 		</center>
 		<script>
-
+			function deliteError(){
+	$("#error").hide(300);
+}
 		</script>
 	</body>
 </html>

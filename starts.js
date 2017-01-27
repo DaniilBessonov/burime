@@ -4,6 +4,8 @@ function go(page) {
 	document.location.href = page;
 }
 
+
+
 function callAPI(method, params, func){
 	console.log("callAPI start",params);
 		$.get("service.php", {method: method, params: JSON.stringify(params)}, function(data){

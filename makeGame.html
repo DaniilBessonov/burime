@@ -11,35 +11,13 @@
 	<body>
 		<center>
 			<h1>Создать игру</h1>
-			<table>
-				<tr>
-					<td>
-					Тема вашей игры:
-					</td>
-					<td>
-					<input id="topic">
-					</input>
-					</td>
-				</tr>
-				<tr>
-					<td>
-					Колличество игроков:
-					</td>
-					<td>
-					<input id="players_count">
-					</input>
-					</td>
-				</tr>
-					<td>
-					Колличество ходов на 1 игрока:
-					</td>
-					<td>
-					<input id="turns_count">
-					</input>
-					</td>
-				</tr>
-			</table>
-			<button class="red" onclick="go('index.html')">
+			<input id="topic" placeholder="Тема игры">
+			</input>
+			<br /><input id="players_count" placeholder="Кол-во игроков">
+			</input>
+			<br /><input id="turns_count" placeholder="Кол-во ходов на 1 игрока">
+			</input>
+			<br /><button class="red" onclick="go('index.html')">
 				Назад
 			</button>
 			<button class="green" onclick="addGame($('#topic').val(), $('#players_count').val(), $('#turns_count').val())">

@@ -2,11 +2,14 @@
 
 .goAway { position:absolute; top:3px; right:3px; width:60px; height:60px }
 body {background:#F5FFFA }
-button {margin:10px; height:50px; font-size:25px; border:0; border-radius: 15px; outline: none;}
-button:hover { background:#A9A9A9 }
+button {margin:10px; height:50px; font-size:25px; border:0; border-radius: 15px; transition: 0.2s linear;}
+button:hover { background:#A9A9A9;  -webkit-transform: scale(1.05); transform: scale(1.05); }
 .red { background:#FA8072 }
 .red:hover { background:#FF0000 }
 .green { background:#9ACD32 }
 .green:hover { background:#66CD00 }
 td {border:none }
 .small { height:30px; font-size:15px; }
+input { height:30px; width:250px; border-radius:15px; font-size:20px; padding:6px }
+#error { position:absolute; top:5px; left:5px; width:300px; height:150px; border-radius: 50px; border: 2px ridge #FA8072 ; background:#E9967A }
+* { outline: none; }
