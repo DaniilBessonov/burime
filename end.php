@@ -23,7 +23,7 @@
 			</button>
 		</center>
 	<script>
-				getAllText(2);
+				getAllText(<?php echo $_GET['game_id']; ?>);
 				
 				function getAllText(game_id){
 					var params={game_id: game_id};

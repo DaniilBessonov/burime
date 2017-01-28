@@ -5,24 +5,27 @@ function go(page) {
 }
 
 function callAPI(method, params, func){
-	console.log("callAPI start",params);
+	console.log("["+method+"] start",params);
 		$.get("service.php", {method: method, params: JSON.stringify(params)}, function(data){
-			console.log(data);
+			//console.log(data);
 			var d=JSON.parse(data);
-			console.log("callAPI finished with result", d);
+			console.log(method+" finished with result", d);
 			if(d.result_type=='error'){
 				showError(d.result);				
 			} else {	
-				console.log("3 result from callAPI", d.result);
+				//console.log("3 result from callAPI", d.result);
 				if(func!=undefined) func(d.result);
 			}		
 
-				if(d.scenario==1 && !$('body').hasClass('login-page')) {
-					go("login.html");
-				}
-				if(d.scenario==2) {
-					go("turn.html");
-				}			
+			if(d.scenario==1 && !$('body').hasClass('login-page')) {
+				go("login.html");
+			}
+			if(d.scenario==2) {
+				go("turn.php?game_id="+d.result);
+			}
+			if(d.scenario==3) {
+				go("end.php?game_id="+d.result);
+			}	
 		});
 }
 
@@ -45,4 +48,11 @@ function logout(){
 callAPI('logout', undefined, function(){
 	go('login.html');
 });
+}
+
+function removePlayer(game_id) {
+	var params={game_id:game_id};
+	callAPI('removePlayer', params, function(){
+	go('index.html');
+	});
 }

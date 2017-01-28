@@ -23,15 +23,7 @@ function login($params){
 	};
 }
 
-function getUserName(){
-	$id=getUserIdFromSession();
-	$name=b_getUserNameById($id);
-	if($name==null){
-		return wrong('Нет такого пользователя');
-	} else {
-		return success($name);
-	}
-}
+
 
 function register($params){
 	$login=$params->login;
@@ -87,12 +79,12 @@ function addText($params) {
 	if(b_isGameFinished($game_id)) {
 		return wrong('Данная игра уже закончалась.');
 	}
-	b_addText($game_id, $text);
-	
+	b_addText($game_id, $text);	
 	
 	$minMadeTurns=b_makeTurn($game_id);
 	if($minMadeTurns==b_getGameTurnCount($game_id)) {
-		b_setGameFinished(game_id);
+		b_setGameFinished($game_id);
+		return success($game_id, 3);
 	}	
 	return success('Ход сделан');
 }
@@ -157,8 +149,11 @@ function getOrder($params){
 	$game_id=$params->game_id;
 	if(is_numeric($game_id)){	
 		$user_id=getUserIdFromSession();
+		if(b_isGameFinished($game_id)){
+			return success($game_id, 3);
+		}
 		if(b_isUserActive($game_id, $user_id) && b_isPlayersReady($game_id)){
-			return success(array(), 2);
+			return success($game_id, 2);
 		}	
 		return success(b_getOrder($game_id));
 	} else {

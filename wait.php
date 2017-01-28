@@ -22,6 +22,7 @@
 			<br /><button class='red' class='goAway' onclick="go('index.html')">
 				В главное меню
 			</button>
+			<button class='exitFromGame' onclick="removePlayer(game_id)">Покинуть игру</button>
 		</center>
 		<script>
 			var game_id=<?php if(isset($_GET['game_id'])) { 
