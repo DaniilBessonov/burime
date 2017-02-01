@@ -6,7 +6,7 @@ session_start();
 			<center>
 				<h2>Ошибка!</h2>
 				<p id="errorText">Ля ля ля. Все очень плохо</p>
-				<p style="font-size:13px;">Нажмите на сообщение, чтобы скрыть его</p>
+				<p class="small">Нажмите на сообщение, чтобы скрыть его</p>
 			</center>
 		</div>
 		<div id="loginPassword">

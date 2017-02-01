@@ -1,4 +1,7 @@
 <html>
+	<?php
+	include_once "validations.php";
+	?>
 	<head>
 		<script src='starts.js'></script>
 		<script src="../js/jquery-3.0.0.js"></script>
@@ -15,14 +18,29 @@
 				Ожидайте своего хода...
 			</h2>
 			<table id="order"></table>
-		
-			<button id="intoGame" class='green' class='goAway' onclick="addPlayer(game_id)">
-				Вступить в игру
-			</button>
-			<br /><button class='red' class='goAway' onclick="go('index.html')">
+			<div id="interaction">
+				<?php
+				
+				// TODO не добавляет надпись "Вы уже в игре" при заходе на страницу
+				
+				$game_id=$_GET['game_id'];
+				$user_id=getUserIdFromSession();
+				
+				if(isUserInGame($game_id, $user_id)==NULL) {
+					echo '<button id="intoGame" class="green" class="goAway" onclick="addPlayer(game_id)">Вступить в игру</button>';
+				} else {
+					echo '<p class="small" style="color:#9ACD32">Вы в игре</p><br /><button class="exitFromGame" onclick="removePlayer(game_id)">Покинуть игру</button>';
+				}
+				
+				?>
+				<!--<button id="intoGame" class='green' class='goAway' onclick="addPlayer(game_id)">
+					Вступить в игру
+				</button> -->
+			</div>
+			<br /><button class="goAway red" onclick="go('index.html')">
 				В главное меню
 			</button>
-			<button class='exitFromGame' onclick="removePlayer(game_id)">Покинуть игру</button>
+			
 		</center>
 		<script>
 			var game_id=<?php if(isset($_GET['game_id'])) { 
@@ -62,6 +80,7 @@
 					alert(result);
 					$('#intoGame').css('display', 'none');
 				});
+				$('#interaction').html('<p class="small" style="color:#9ACD32">Вы в игре</p><br /><button class="exitFromGame" onclick="removePlayer(game_id)">Покинуть игру</button>');
 			}
 		</script>
 	</body>

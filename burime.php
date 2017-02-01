@@ -70,6 +70,14 @@ function b_addText($game_id, $text) {
 	$result = mysql_query($query);	
 }
 
+//Новая функция
+function isUserInGame($game_id, $user_id) {
+	$query="SELECT id FROM `orders` WHERE game_id=$game_id and user_id=$user_id";
+	$result = mysql_query_single($query);
+	return $result;
+}
+
+
 function getUserIdFromSession(){	
 	$userId=$_SESSION['userId'];
 	return $userId; 

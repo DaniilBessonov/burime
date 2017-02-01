@@ -1,7 +1,9 @@
 <!-- CSS стили -->
 
-.goAway { position:absolute; top:3px; right:3px; width:60px; height:60px }
-.exitFromGame { height:30px; width:250px; }
+.goAway { top:3px; right:3px; width:250px; height:60px; }
+.exitFromGame { height:25px; width:200px; font-size:15px; opacity: 0.3; }
+.exitFromGame:hover { opacity: 0.8; }
+a { text-decoration:none; font-size:25px; color:black; }
 body {background:#F5FFFA }
 button {margin:10px; height:50px; font-size:25px; border:0; border-radius: 15px; transition: 0.2s linear;}
 button:hover { background:#A9A9A9;  -webkit-transform: scale(1.05); transform: scale(1.05); }
@@ -9,12 +11,24 @@ button:hover { background:#A9A9A9;  -webkit-transform: scale(1.05); transform: s
 .red:hover { background:#FF0000 }
 .green { background:#9ACD32 }
 .green:hover { background:#66CD00 }
-td {border:none }
+td {border:none; transition: 0.1s linear;  }
+td:hover { -webkit-transform: scale(1.05); box-shadow:0 0 0 128px rgba(0, 0, 0, 0.1) inset; }
+/* td:hover::after {
+    content: attr(data-title); 
+    position: absolute; 
+    left: 100%; top: 100%; 
+    z-index: 1; 
+    background: rgba(255,255,230,0.9); 
+    font-family: Arial, sans-serif; 
+    font-size: 11px; 
+    padding: 5px 10px; 
+    border: 1px solid #333; 
+   } */
 .small { height:30px; font-size:15px; }
 input { height:30px; width:250px; border-radius:15px; font-size:20px; padding:6px }
 #error { position:absolute; top:5px; left:5px; width:300px; height:150px; border-radius: 50px; border: 2px ridge #FA8072 ; background:#E9967A }
-#loginPassword { position:absolute; width:300px; height:150px; background:#FFFACD; right:5; top:5; border-radius: 50px; border: 2px ridge #F0E68C }
+#loginPassword { position:absolute; width:300px; height:150px; background:#FFFACD; right:5; top:5; border-radius: 50px; border: 2px ridge #F0E68C; font-size:25px;}
 .logOrReg {  outline: none; background: #FFFACD; width:250px; border-radius: 15px; }
 .logOrReg:hover { background:#FFE4B5 }
 .login-off #loginPassword{ display:none; }
-* { outline: none; }
+* { outline: none;}
