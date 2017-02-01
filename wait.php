@@ -1,6 +1,7 @@
 <html>
 	<?php
 	include_once "validations.php";
+	session_start();
 	?>
 	<head>
 		<script src='starts.js'></script>
@@ -11,7 +12,7 @@
 
 		</style>
 	</head>
-	<body>
+	<body class="game">
 		<center>
 			<h1>Ожидание</h1>
 			<h2>
@@ -26,11 +27,15 @@
 				$game_id=$_GET['game_id'];
 				$user_id=getUserIdFromSession();
 				
-				if(isUserInGame($game_id, $user_id)==NULL) {
+				connectDB();
+				
+				if(b_isUserInGame($game_id, $user_id)==NULL) {
 					echo '<button id="intoGame" class="green" class="goAway" onclick="addPlayer(game_id)">Вступить в игру</button>';
 				} else {
 					echo '<p class="small" style="color:#9ACD32">Вы в игре</p><br /><button class="exitFromGame" onclick="removePlayer(game_id)">Покинуть игру</button>';
 				}
+				
+				disconnectDB();
 				
 				?>
 				<!--<button id="intoGame" class='green' class='goAway' onclick="addPlayer(game_id)">

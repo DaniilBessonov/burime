@@ -7,7 +7,7 @@
 		<style>
 		</style>
 	</head>
-	<body>
+	<body class="game">
 		<center>
 			<h1>Сейчас ваш ход</h1>
 			<h2>

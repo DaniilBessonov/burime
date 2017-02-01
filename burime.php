@@ -24,8 +24,8 @@ function b_login($login, $password){
 
 function connectDB() {
 	global $db_link;
-	$db_link = mysql_connect('localhost', 'root', '');
-	mysql_select_db('burime', $db_link);	
+	$db_link = mysql_connect('localhost', 'root', ''); /* адрес, логи, пароль */
+	mysql_select_db('burime', $db_link);	/* имя базы данных */
 }
 
 function disconnectDB(){
@@ -71,7 +71,7 @@ function b_addText($game_id, $text) {
 }
 
 //Новая функция
-function isUserInGame($game_id, $user_id) {
+function b_isUserInGame($game_id, $user_id) {
 	$query="SELECT id FROM `orders` WHERE game_id=$game_id and user_id=$user_id";
 	$result = mysql_query_single($query);
 	return $result;

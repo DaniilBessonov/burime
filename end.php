@@ -9,7 +9,7 @@
 
 		</style>
 	</head>
-	<body>
+	<body class="game">
 		<center>
 			<h1>Конец игры</h1>
 			<h2>

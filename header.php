@@ -13,7 +13,7 @@ session_start();
 			<center>								
 				<?php 
 				if(isset($_SESSION['isAuthorized']) && $_SESSION['isAuthorized']==1){
-					echo getActiveUserName();
+					echo '<p>'.getActiveUserName().'</p>';
 					echo '<button class="button logOrReg" onclick="logout()">Выйти</button>';
 				} else {
 					echo '<button class="button logOrReg" onclick="go(\'register.html\')">Зарегестрироваться</button>';
