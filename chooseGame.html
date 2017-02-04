@@ -29,6 +29,10 @@
 					callAPI('getActiveGames', undefined, function(result){
 						console.log(result);
 						for (var i=0; i<result.length; i++){
+								 /* TODO Выводить ник админа игры
+								 callAPI('getActiveGames', result[i].id, function(resultAdmin){
+									console.log(resultAdmin);
+								}); */
 								var html = '<a href="wait.php?game_id='+result[i].id+'">'+result[i].topic+'</a>';
 								$('#games').append('<tr><td>'+html+'</td></tr>');
 							}	

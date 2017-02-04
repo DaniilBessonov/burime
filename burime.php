@@ -70,13 +70,25 @@ function b_addText($game_id, $text) {
 	$result = mysql_query($query);	
 }
 
-//Новая функция
 function b_isUserInGame($game_id, $user_id) {
 	$query="SELECT id FROM `orders` WHERE game_id=$game_id and user_id=$user_id";
 	$result = mysql_query_single($query);
 	return $result;
 }
 
+//Новая функция
+function b_getAdmin($game_id) {
+	$query="SELECT admin_id FROM `games` WHERE game_id=$game_id";
+	$result = mysql_query_single($query);
+	$admin_name=b_getUserNameById($result);
+	return $admin_name;
+}
+
+//Функция, которая не получилась
+function b_getMyGames($user_id) {
+	$query="SELECT game_id FROM `orders` WHERE user_id=$user_id";
+	$result = mysql_query($query);
+	//Далее найти все темы (и админов) игр, которые имеют id=game_id
 
 function getUserIdFromSession(){	
 	$userId=$_SESSION['userId'];

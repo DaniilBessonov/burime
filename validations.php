@@ -56,6 +56,12 @@ function isLoginExist($login){
 	}
 }
 
+//Hовое
+function getMyGames(){
+	$user_id=getUserIdFromSession();
+	return success(b_getMyGames($user_id));
+}
+
 function addGame($params) {
 	$topic=$params->topic;
 	$players_count=$params->players_count;
@@ -66,6 +72,11 @@ function addGame($params) {
 	b_addPlayer($game_id, $user_id);
 	
 	return success($game_id);
+}
+
+function getAdmin($params) {
+	$game_id=$params->game_id;
+	return success(b_getAdmin($game_id));
 }
 
 function addText($params) {
