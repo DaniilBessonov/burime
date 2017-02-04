@@ -2,15 +2,25 @@
 	<?php
 	include_once "validations.php";
 	session_start();
+	
+	if(isset($_GET['game_id'])) { 
+		$game_id = $_GET['game_id']; 
+	} else {
+		header('Location: index.html');
+	}
 	?>
 	<head>
 		<script src='starts.js'></script>
 		<script src="../js/jquery-3.0.0.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/styles.css">
 		<title>Ожидание</title>
-		<style>
-
-		</style>
+		<?php 
+		connectDB();
+			if(b_getAdmin($game_id)){
+			 echo "<style>	.forAdmin { display: block; } </style>";
+			}
+			disconnectDB();
+		?>
 	</head>
 	<body class="game">
 		<center>
@@ -48,12 +58,7 @@
 			
 		</center>
 		<script>
-			var game_id=<?php if(isset($_GET['game_id'])) { 
-								echo $_GET['game_id']; 
-							} else {
-								header('Location: index.html');
-							}
-				?>;					
+			var game_id=<?php echo $game_id; ?>;					
 			time();
 			
 			function getOrder(game_id) {
@@ -68,7 +73,7 @@
 								if(result[i].turn_now==1) {
 									html = '<b>'+html+'</b>';
 								} 
-								$('#order').append('<tr><td>'+html+'</td></tr>');
+								$('#order').append('<tr><td>'+html+'</td><td><button class="deletePlayer red forAdmin" onclick="deletePlayer('+result[i].user_id+')">Удалить игрока</button></td></tr>');
 							}	
 				});
 			}

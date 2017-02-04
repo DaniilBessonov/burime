@@ -33,8 +33,8 @@
 								 callAPI('getActiveGames', result[i].id, function(resultAdmin){
 									console.log(resultAdmin);
 								}); */
-								var html = '<a href="wait.php?game_id='+result[i].id+'">'+result[i].topic+'</a>';
-								$('#games').append('<tr><td>'+html+'</td></tr>');
+								var html = '<td><a href="wait.php?game_id='+result[i].id+'">'+result[i].topic+'</a></td><td>'+result[i].login+'</td>';
+								$('#games').append('<tr>'+html+'</tr>');
 							}	
 					});					
 				}

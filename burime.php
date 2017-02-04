@@ -86,9 +86,14 @@ function b_getAdmin($game_id) {
 
 //Функция, которая не получилась
 function b_getMyGames($user_id) {
-	$query="SELECT game_id FROM `orders` WHERE user_id=$user_id";
+	$query="SELECT topic, id FROM `games` WHERE id in ( SELECT game_id FROM `orders` WHERE user_id=14 ) and finished=0";
 	$result = mysql_query($query);
-	//Далее найти все темы (и админов) игр, которые имеют id=game_id
+	$text=array();
+	while($row = mysql_fetch_assoc($result)) {
+		array_push($text, array("id"=>$row["id"], "topic"=>$row["topic"]));
+	}
+	return $text;
+}
 
 function getUserIdFromSession(){	
 	$userId=$_SESSION['userId'];
@@ -142,10 +147,10 @@ function b_isPlayersReady($game_id){
 
 function b_getActiveGames() {
 	$games=array();
-	$query="SELECT id, topic FROM `games` WHERE finished=0 and players_ready=0";
+	$query="SELECT `games`.id, topic, login FROM `games` join `users` on admin_id=`users`.id WHERE finished=0 and players_ready=0";
 	$result = mysql_query($query);
 	while ($row = mysql_fetch_assoc($result)) {
-		 array_push($games, array("id"=>$row["id"], "topic"=>$row["topic"]));				
+		 array_push($games, array("id"=>$row["id"], "topic"=>$row["topic"], "login"=>$row["login"]));				
 	}
 	return $games;
 }
@@ -157,12 +162,12 @@ function b_getLastText($game_id) {
 }
 
 function b_getOrder($game_id) {
-	$query="SELECT login, turn_now FROM `orders` JOIN users AS u ON u.id=user_id WHERE game_id=$game_id ORDER BY order_number";
+	$query="SELECT login, turn_now, user_id FROM `orders` JOIN users AS u ON u.id=user_id WHERE game_id=$game_id ORDER BY order_number";
 	$result = mysql_query($query);
 	
 	$table=array();
 	while($row = mysql_fetch_assoc($result)) {
-		array_push( $table, array("login"=>$row["login"], "turn_now"=>$row["turn_now"]) );
+		array_push( $table, array("login"=>$row["login"], "turn_now"=>$row["turn_now"], "user_id"=>$row["user_id"]) );
 	}
 	
 	return $table;
