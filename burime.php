@@ -66,7 +66,7 @@ function b_addGame($topic, $players_count, $turns_count) {
 function b_addText($game_id, $text) {
 	$user=getUserIdFromSession();
 	$order_number=mysql_query_single("SELECT IFNULL(max(order_number),0)+1 FROM `stories` WHERE game_id=$game_id");
-	$query="INSERT INTO `stories`(`game_id`, `text`,`user_id`, `order_number`) VALUES ($game_id, '$text', $user, $order_number)";
+	$query="INSERT INTO `stories`(`game_id`, `text`,`user_id`,	`order_number`) VALUES ($game_id, '$text', $user, $order_number)";
 	$result = mysql_query($query);	
 }
 
@@ -84,9 +84,22 @@ function b_getAdmin($game_id) {
 	return $admin_name;
 }
 
+//Новая функция
+function b_getAdminId($game_id) {
+	$query="SELECT admin_id FROM `games` WHERE id=$game_id";
+	$result = mysql_query_single($query);
+	return $result;
+}
+
+function b_isMeAdmin($game_id){
+	$user_id=getUserIdFromSession();
+	$admin_id=b_getAdminId($game_id);
+	return $user_id==$admin_id;
+}
+
 //Функция, которая не получилась
 function b_getMyGames($user_id) {
-	$query="SELECT topic, id FROM `games` WHERE id in ( SELECT game_id FROM `orders` WHERE user_id=14 ) and finished=0";
+	$query="SELECT topic, id FROM `games` WHERE id in ( SELECT game_id FROM `orders` WHERE user_id=$user_id ) and finished=0";
 	$result = mysql_query($query);
 	$text=array();
 	while($row = mysql_fetch_assoc($result)) {
@@ -111,6 +124,8 @@ function b_addPlayer($game_id, $user_id){
 function b_removePlayer($game_id, $user_id){
 	$query="DELETE FROM `orders` WHERE user_id=$user_id and game_id=$game_id";
 	$result = mysql_query($query);
+	$query2="UPDATE `games` SET `players_count`=`players_count`-1  WHERE id=$game_id";
+	$result2 = mysql_query($query2);
 }
 
 function b_getActiveUser($game_id) {

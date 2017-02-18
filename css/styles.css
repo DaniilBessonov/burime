@@ -34,4 +34,5 @@ input { height:30px; width:250px; border-radius:15px; font-size:20px; padding:6p
 .logOrReg:hover { background:#FFE4B5 }
 .login-off #loginPassword{ display:none; }
 .forAdmin{ display: none; }
+.deletePlayer { height:30px; font-size:15px }
 * { outline: none;}

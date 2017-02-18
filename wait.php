@@ -15,8 +15,8 @@
 		<link rel="stylesheet" type="text/css" href="css/styles.css">
 		<title>Ожидание</title>
 		<?php 
-		connectDB();
-			if(b_getAdmin($game_id)){
+			connectDB();
+			if(b_isMeAdmin($game_id)){
 			 echo "<style>	.forAdmin { display: block; } </style>";
 			}
 			disconnectDB();
@@ -34,7 +34,7 @@
 				
 				// TODO не добавляет надпись "Вы уже в игре" при заходе на страницу
 				
-				$game_id=$_GET['game_id'];
+				//$game_id=$_GET['game_id'];
 				$user_id=getUserIdFromSession();
 				
 				connectDB();
@@ -91,6 +91,13 @@
 					$('#intoGame').css('display', 'none');
 				});
 				$('#interaction').html('<p class="small" style="color:#9ACD32">Вы в игре</p><br /><button class="exitFromGame" onclick="removePlayer(game_id)">Покинуть игру</button>');
+			}
+			
+			function deletePlayer(user_id) {
+				if(confirm('Вы действительно хотите удалить этого игрока из игры?')){
+					var params={user_id:user_id, game_id:game_id};
+					callAPI('removePlayer', params);
+				}
 			}
 		</script>
 	</body>
