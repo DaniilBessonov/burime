@@ -5,8 +5,7 @@
 		<link rel="stylesheet" type="text/css" href="css/styles.css">
 		<title>Присоедениться</title>
 		<style>
-			
-
+			td { width:250px; }
 		</style>
 	</head>
 	<body>
@@ -17,6 +16,18 @@
 			</h2>
 			<p class="small">Кликните по строчке, чтобы перейти в зал ождания игры</p>
 			<table id="games">
+				<tr>
+					<td>
+						<h2>
+						Тема игры
+						</h2>
+					</td>
+					<td>
+						<h2>
+						Админ игры
+						</h2>
+					</td>
+				</tr>
 			</table>
 			<button class='red' onclick="go('index.html')">
 				Назад
@@ -34,7 +45,7 @@
 									console.log(resultAdmin);
 								}); */
 								var html = '<td><a href="wait.php?game_id='+result[i].id+'">'+result[i].topic+'</a></td><td>'+result[i].login+'</td>';
-								$('#games').append('<tr>'+html+'</tr>');
+								$('#games').append('<tr class="trans">'+html+'</tr>');
 							}	
 					});					
 				}

@@ -42,7 +42,7 @@
 				if(b_isUserInGame($game_id, $user_id)==NULL) {
 					echo '<button id="intoGame" class="green" class="goAway" onclick="addPlayer(game_id)">Вступить в игру</button>';
 				} else {
-					echo '<p class="small" style="color:#9ACD32">Вы в игре</p><br /><button class="exitFromGame" onclick="removePlayer(game_id)">Покинуть игру</button>';
+					echo '<p class="small" style="color:#9ACD32">Вы в игре</p><br /><button class="exitFromGame" onclick="if(confirm("Вы действительно хотите покинуть игру?")){removePlayer(game_id)}">Покинуть игру</button>'; //Почему не рабоатет?
 				}
 				
 				disconnectDB();
@@ -52,7 +52,7 @@
 					Вступить в игру
 				</button> -->
 			</div>
-			<br /><button class="goAway red" onclick="go('index.html')">
+			<br /><button class="red small" onclick="if(confirm('Сейчас идет игра. Вы действительно хотите выйти в главное меню?')){go('index.html')}">
 				В главное меню
 			</button>
 			

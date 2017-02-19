@@ -26,7 +26,7 @@
 						console.log(result);
 						for (var i=0; i<result.length; i++){
 								var html = '<a href="wait.php?game_id='+result[i].id+'">'+result[i].topic+'</a>';
-								$('#mygames').append('<tr><td>'+html+'</td></tr>');
+								$('#mygames').append('<tr class="trans"><td>'+html+'</td></tr>');
 							}	
 					});					
 				}

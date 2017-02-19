@@ -20,10 +20,9 @@
 			<br /><button class='green' onclick="addText($('input').val())">
 				Сделать ход
 			</button>
-			<button class='red' class='goAway' onclick="go('index.html')">
-				Назад
+			<br /><button class='red small' onclick="if(confirm('Сейчас идет игра. Вы действительно хотите выйти в главное меню?')){go('index.html')}">
+				В главное меню
 			</button>
-			<button class='exitFromGame' onclick="removePlayer(game_id)">Покинуть игру</button>
 		</center>
 		<script>
 				var game_id=<?php echo $_GET['game_id']; ?>;					
