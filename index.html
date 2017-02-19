@@ -1,18 +1,21 @@
 <html>
-	<head>
+	<head><!-- window.innerWidth -->
 		<script src='starts.js'></script>
 		<script src="js/jquery-3.0.0.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/styles.css">	
 		<link rel="import" href="error.html"> 
 		<title>Меню</title>
 		<style>	
-			
+			.welcome {font-size:30px; display:none; color:red}
 			h1 { font-size: 80px }
 		</style>
 	</head>
 	<body>
 		<center>
 			<h1>Буриме</h1>
+			<p class='welcome'>
+				Добро пожаловать!
+			</p>
 			<button class='button' onclick="go('makeGame.html')">
 				Создать игру
 			</button>
@@ -25,10 +28,33 @@
 			<br /><button class='button' onclick="go('rules.html')">
 				Информация
 			</button>
-			
+			<p class='welcome'>
+				Если Вы у нас в первый раз, советуем ознакомиться с правилами и информацией об игре.
+			</p>
 		</center>
 		<script>
-	
+			if(!isWelcomeCookieExist()) {
+				showWelcome();
+				setWelcomeCookie();
+			}
+			
+			function setWelcomeCookie() {
+				document.cookie='burime=set';
+			}
+			
+			function isWelcomeCookieExist() {
+				var cookies=document.cookie.split('; ');
+				for(i=0; i<cookies.length; i++){
+					if(cookies[i]=='burime=set'){
+						return true;						
+					}
+				}
+			}
+			
+			function showWelcome() {
+				$('.welcome').css('display', 'block');
+			}
+			
 		</script>
 	</body>
 </html>

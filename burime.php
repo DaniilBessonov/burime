@@ -78,7 +78,7 @@ function b_isUserInGame($game_id, $user_id) {
 
 //Новая функция
 function b_getAdmin($game_id) {
-	$query="SELECT admin_id FROM `games` WHERE game_id=$game_id";
+	$query="SELECT admin_id FROM `games` WHERE id=$game_id";
 	$result = mysql_query_single($query);
 	$admin_name=b_getUserNameById($result);
 	return $admin_name;

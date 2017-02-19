@@ -42,7 +42,7 @@
 				if(b_isUserInGame($game_id, $user_id)==NULL) {
 					echo '<button id="intoGame" class="green" class="goAway" onclick="addPlayer(game_id)">Вступить в игру</button>';
 				} else {
-					echo '<p class="small" style="color:#9ACD32">Вы в игре</p><br /><button class="exitFromGame" onclick="if(confirm("Вы действительно хотите покинуть игру?")){removePlayer(game_id)}">Покинуть игру</button>'; //Почему не рабоатет?
+					echo '<p class="small" style="color:#9ACD32">Вы в игре</p><br /><button class="exitFromGame" onclick="removePlayerHimself()">Покинуть игру</button>'; //Почему не рабоатет?
 				}
 				
 				disconnectDB();
@@ -97,6 +97,15 @@
 				if(confirm('Вы действительно хотите удалить этого игрока из игры?')){
 					var params={user_id:user_id, game_id:game_id};
 					callAPI('removePlayer', params);
+				}
+			}
+			
+			function removePlayerHimself() {
+				if(confirm('Вы действительно хотите выйти из игры?')){
+					var params={game_id:game_id};
+					callAPI('removePlayerHimself', params, function() {
+						go('index.html');
+					});
 				}
 			}
 		</script>

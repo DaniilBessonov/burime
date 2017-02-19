@@ -115,13 +115,26 @@ function addPlayer($params) {
 		}
 		return success('Вы добавлены в игру');
 	} else {
-		return wrong('Пользователь уже в игре');
+		return wrong('Пользователь уже в игре или нет свободных мест.');
 	}
+}
+
+function removePlayerHimself($params) {
+	$game_id=$params->game_id;
+	$user_id=getUserIdFromSession();
+	b_removePlayer($game_id, $user_id);
+	return success('Вы удалены из игры');
 }
 
 function removePlayer($params) {
 	$game_id=$params->game_id;
-	$user_id=getUserIdFromSession();
+	$user_id=$params->user_id;
+	
+	$admin_id=b_getAdminId($game_id);
+	if($admin_id==$user_id) {
+		return wrong('Вы не можете удалить из игры самого себя.');
+	}
+	
 	b_removePlayer($game_id, $user_id);
 	return success('Пользователь удален из игры');
 }
