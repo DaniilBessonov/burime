@@ -40,7 +40,7 @@ window.onload = function() {
   
 function addHeader(){
 	$.get("header.php", undefined, function(result){
-		$('body').append(result);
+		$('body').prepend(result);
 	});
 }
 

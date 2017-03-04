@@ -1,37 +1,44 @@
-<html>
+п»ї<html lang="ru">
 	<head><!-- window.innerWidth -->
 		<script src='starts.js'></script>
 		<script src="js/jquery-3.0.0.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/styles.css">	
-		<link rel="import" href="error.html"> 
-		<title>Меню</title>
+		<!-- <link rel="import" href="error.html"> -->	
+		<meta charset="utf-8">
+		<title>РњРµРЅСЋ</title>
 		<style>	
 			.welcome {font-size:30px; display:none; color:red}
-			h1 { font-size: 80px }
+			.mobile button { width:100%; }
 		</style>
+		<meta name="viewport" content="width=device-width"/>
 	</head>
 	<body>
-		<center>
-			<h1>Буриме</h1>
+	
+		<!-- Р’РµСЂСЃРёСЏ РґР»СЏ СЌРєСЂР°РЅР° >900px -->
+		<center class="comp">
+			<h1>Р‘СѓСЂРёРјРµ</h1>
 			<p class='welcome'>
-				Добро пожаловать!
+				Р”РѕР±СЂРѕ РїРѕР¶Р°Р»РѕРІР°С‚СЊ!
 			</p>
-			<button class='button' onclick="go('makeGame.html')">
-				Создать игру
+			<button onclick="go('makeGame.html')">
+				РЎРѕР·РґР°С‚СЊ РёРіСЂСѓ
 			</button>
-			<br /><button class='button' onclick="go('chooseGame.html')">
-				Присоедениться
+			<br /><button onclick="go('chooseGame.html')">
+				РџСЂРёСЃРѕРµРґРµРЅРёС‚СЊСЃСЏ
 			</button>
-			<br /><button class='button' onclick="go('mygames.html')">
-				Мои начатые игры
+			<br /><button onclick="go('mygames.html')">
+				РњРѕРё РЅР°С‡Р°С‚С‹Рµ РёРіСЂС‹
 			</button>
-			<br /><button class='button' onclick="go('rules.html')">
-				Информация
+			<br /><button onclick="go('rules.html')">
+				РРЅС„РѕСЂРјР°С†РёСЏ
 			</button>
 			<p class='welcome'>
-				Если Вы у нас в первый раз, советуем ознакомиться с правилами и информацией об игре.
+				Р•СЃР»Рё Р’С‹ Сѓ РЅР°СЃ РІ РїРµСЂРІС‹Р№ СЂР°Р·, СЃРѕРІРµС‚СѓРµРј РѕР·РЅР°РєРѕРјРёС‚СЊСЃСЏ СЃ РїСЂР°РІРёР»Р°РјРё Рё РёРЅС„РѕСЂРјР°С†РёРµР№ РѕР± РёРіСЂРµ:
 			</p>
 		</center>
+		
+
+		
 		<script>
 			if(!isWelcomeCookieExist()) {
 				showWelcome();
@@ -54,6 +61,7 @@
 			function showWelcome() {
 				$('.welcome').css('display', 'block');
 			}
+			
 			
 		</script>
 	</body>

@@ -1,5 +1,8 @@
 <!-- CSS стили -->
 
+.comp h1 { font-size: 80px; }
+.mobile h1 { font-size: 40px; margin-top:50px }
+
 .goAway { top:3px; right:3px; width:250px; height:60px; }
 .game #loginPassword { zoom:0.4; transition: 2s linear; }
 .game #loginPassword:hover  { -webkit-transform: scale(2); transform: scale(2); right:180px; top:90px}
@@ -8,6 +11,9 @@
 a { text-decoration:none; font-size:25px; color:black; }
 body {background:#F5FFFA;}
 button {margin:10px; height:50px; font-size:25px; border:0; border-radius: 15px; transition: 0.2s linear;}
+.mobile button { font-size:15px }
+#loginPassword button { background:#FFFACD; }
+#loginPassword button:hover { background:red; }
 button:hover { background:#A9A9A9;  -webkit-transform: scale(1.05); transform: scale(1.05); }
 .red { background:#FA8072 }
 .red:hover { background:#FF0000 }
@@ -30,9 +36,25 @@ button:hover { background:#A9A9A9;  -webkit-transform: scale(1.05); transform: s
 input { height:30px; width:250px; border-radius:15px; font-size:20px; padding:6px }
 #error { position:absolute; top:5px; left:5px; width:300px; height:150px; border-radius: 50px; border: 2px ridge #FA8072 ; background:#E9967A }
 #loginPassword { position:absolute; width:300px; height:150px; background:#FFFACD; right:5; top:5; border-radius: 50px; border: 2px ridge #F0E68C; font-size:25px;}
-.logOrReg {  outline: none; background: #FFFACD; width:250px; border-radius: 15px; }
-.logOrReg:hover { background:#FFE4B5 }
+.comp .logOrReg {  outline: none; background: #FFFACD; width:250px; border-radius: 15px; }
+.comp .logOrReg:hover { background:#FFE4B5 }
+.mobile .logOrReg { width:50%; margin:0px; border-radius: 0px; border: 2px ridge white; }
 .login-off #loginPassword{ display:none; }
 .forAdmin{ display: none; }
 .deletePlayer { height:30px; font-size:15px }
 * { outline: none;}
+
+
+
+.mobile { display:none; }
+/* для телефонов < 900px */			
+@media screen and (max-width: 900px) {
+	/*.comp {display:none}
+	.mobile {display:block}*/
+	#error  { position:inherit; border-radius: 0px; width:100%; margin-top: 60px;  }
+	.comp button { width:100%; }
+	.comp .logOrReg { width:50%; margin:0px; border-radius: 0px; border: 2px ridge white; display: inline;}
+	/*.comp button { font-size:15px }*/
+	.comp h1 { font-size: 40px; margin-top:50px }
+	#loginPassword {  background:none; border:none; position:absolute; width:100%; height:100px; top:0 }
+}
