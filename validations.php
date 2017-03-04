@@ -45,10 +45,10 @@ function logout(){
 	return success('Вы вышли из аккаунта');
 }
 
-function isLoginExist($login){
+function isLoginExist($login){	
 	$query = "SELECT * FROM `users` WHERE login='$login'";	
-	$result = mysql_query($query);
-	$num_rows = mysql_num_rows($result);
+	$result = select_query($query);
+	$num_rows = mysqli_num_rows($result);
 	if($num_rows==0) {
 		return false;
 	} else{
@@ -105,8 +105,8 @@ function addPlayer($params) {
 	$user_id=getUserIdFromSession();
 	
 	$query="SELECT `user_id` FROM `orders` WHERE game_id=$game_id and user_id=$user_id";
-	$result = mysql_query($query);
-	$num_rows = mysql_num_rows($result);
+	$result = select_query($query);
+	$num_rows = mysqli_num_rows($result);
 	if($num_rows==0 && !b_isPlayersReady($game_id)){	
 		b_addPlayer ($game_id, $user_id);
 		

@@ -46,7 +46,7 @@
 									console.log(resultAdmin);
 								}); */
 								var html = '<td><a>'+result[i].topic+'</a></td><td>'+result[i].login+'</td>';
-								$('#games').append('<tr class="trans" onclick="go("wait.php?game_id='+result[i].id+'");">'+html+'</tr>');
+								$('#games').append('<tr class="trans" onclick="go(\'wait.php?game_id='+result[i].id+'\')">'+html+'</tr>');
 							}	
 					});					
 				}

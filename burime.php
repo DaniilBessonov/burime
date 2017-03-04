@@ -1,21 +1,22 @@
 <?php
-$db_link = null;
+$mysqli = null;
 
 function b_register($login, $password){	
+	global $mysqli;
 	$query = "INSERT INTO `users`(`login`, `password`) VALUES ('$login', '$password')";
-	$result = mysql_query($query);
-	$id = mysql_insert_id();
+	$result = select_query($query);
+	$id = mysqli_insert_id($mysqli);
 	return $id;
 }
 
 function b_login($login, $password){
 	$query="SELECT id FROM `users` WHERE login='$login' and password='$password'";
-	$result = mysql_query($query);
-	$num_rows = mysql_num_rows($result);
+	$result = select_query($query);
+	$num_rows = mysqli_num_rows($result);
 	if($num_rows==0) {			
 		return 0;
 	} else {
-		while ($row = mysql_fetch_assoc($result)) {
+		while ($row = $result->fetch_assoc()) {
 			return $row["id"];				
 		}	
 		return 0;
@@ -23,19 +24,23 @@ function b_login($login, $password){
 }
 
 function connectDB() {
-	global $db_link;
-	$db_link = mysql_connect('localhost', 'root', ''); /* адрес, логи, пароль */
-	mysql_select_db('burime', $db_link);	/* имя базы данных */
+	global $mysqli;
+	$mysqli = new mysqli('localhost', 'root', '', 'burime'); /* адрес, логи, пароль */
 }
 
 function disconnectDB(){
-	global $db_link;
-	mysql_close($db_link);
+	global $mysqli;
+	mysqli_close($mysqli);
+}
+
+function select_query($query){
+	global $mysqli;
+	return $mysqli->query($query);
 }
 
 function mysql_query_single($query){
-	$result = mysql_query($query);
-	while ($row = mysql_fetch_array($result, MYSQL_NUM)) {
+	$result = select_query($query);
+	while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
 		return $row[0];
 	}
 	return null;
@@ -56,10 +61,11 @@ function getActiveUserName(){
 }
 
 function b_addGame($topic, $players_count, $turns_count) {
+	global $mysqli;
 	$admin_id=getUserIdFromSession();
 	$query="INSERT INTO `games`(`topic`, `admin_id`, `players_count`, `turns_count`) VALUES ('$topic', $admin_id, $players_count, $turns_count)";
-	$result = mysql_query($query);
-	$id = mysql_insert_id();
+	$result = select_query($query);
+	$id = mysqli_insert_id($mysqli);
 	return $id;
 }
 
@@ -67,7 +73,7 @@ function b_addText($game_id, $text) {
 	$user=getUserIdFromSession();
 	$order_number=mysql_query_single("SELECT IFNULL(max(order_number),0)+1 FROM `stories` WHERE game_id=$game_id");
 	$query="INSERT INTO `stories`(`game_id`, `text`,`user_id`,	`order_number`) VALUES ($game_id, '$text', $user, $order_number)";
-	$result = mysql_query($query);	
+	$result = select_query($query);	
 }
 
 function b_isUserInGame($game_id, $user_id) {
@@ -100,9 +106,9 @@ function b_isMeAdmin($game_id){
 //Функция, которая не получилась
 function b_getMyGames($user_id) {
 	$query="SELECT topic, id FROM `games` WHERE id in ( SELECT game_id FROM `orders` WHERE user_id=$user_id ) and finished=0";
-	$result = mysql_query($query);
+	$result = select_query($query);
 	$text=array();
-	while($row = mysql_fetch_assoc($result)) {
+	while($row = $result->fetch_assoc()) {
 		array_push($text, array("id"=>$row["id"], "topic"=>$row["topic"]));
 	}
 	return $text;
@@ -118,14 +124,14 @@ function b_addPlayer($game_id, $user_id){
 	$turn_now=0;
 	if($order_number==1) $turn_now=1;
 	$query="INSERT INTO `orders`(`game_id`, `user_id`, `turn_now`, `order_number`) VALUES ($game_id, $user_id, $turn_now, $order_number)";
-	$result = mysql_query($query);
+	$result = select_query($query);
 }
 
 function b_removePlayer($game_id, $user_id){
 	$query="DELETE FROM `orders` WHERE user_id=$user_id and game_id=$game_id";
-	$result = mysql_query($query);
+	$result = select_query($query);
 	$query2="UPDATE `games` SET `players_count`=`players_count`-1  WHERE id=$game_id";
-	$result2 = mysql_query($query2);
+	$result2 = select_query($query2);
 }
 
 function b_getActiveUser($game_id) {
@@ -136,9 +142,9 @@ function b_getActiveUser($game_id) {
 
 function b_getAllText($game_id){
 	$query="SELECT text FROM `stories` WHERE game_id=$game_id order by order_number";
-	$result = mysql_query($query);
+	$result = select_query($query);
 	$text=array();
-	while($res = mysql_fetch_assoc($result)) {
+	while($res = $result->fetch_assoc()) {
 		$text[] = $res['text'];
 	}
 	return $text;
@@ -146,12 +152,12 @@ function b_getAllText($game_id){
 
 function b_setGameFinished($game_id) {
 	$query="UPDATE `games` SET `finished`= 1 WHERE id=$game_id";
-	$result = mysql_query($query);
+	$result = select_query($query);
 }
 
 function b_setPlayersReady($game_id){
 	$query="UPDATE `games` SET `players_ready`=1 WHERE id=$game_id";
-	$result = mysql_query($query);
+	$result = select_query($query);
 }
 
 function b_isPlayersReady($game_id){
@@ -163,8 +169,8 @@ function b_isPlayersReady($game_id){
 function b_getActiveGames() {
 	$games=array();
 	$query="SELECT `games`.id, topic, login FROM `games` join `users` on admin_id=`users`.id WHERE finished=0 and players_ready=0";
-	$result = mysql_query($query);
-	while ($row = mysql_fetch_assoc($result)) {
+	$result = select_query($query);
+	while ($row = $result->fetch_assoc()) {
 		 array_push($games, array("id"=>$row["id"], "topic"=>$row["topic"], "login"=>$row["login"]));				
 	}
 	return $games;
@@ -178,10 +184,10 @@ function b_getLastText($game_id) {
 
 function b_getOrder($game_id) {
 	$query="SELECT login, turn_now, user_id FROM `orders` JOIN users AS u ON u.id=user_id WHERE game_id=$game_id ORDER BY order_number";
-	$result = mysql_query($query);
+	$result = select_query($query);
 	
 	$table=array();
-	while($row = mysql_fetch_assoc($result)) {
+	while($row = $result->fetch_assoc()) {
 		array_push( $table, array("login"=>$row["login"], "turn_now"=>$row["turn_now"], "user_id"=>$row["user_id"]) );
 	}
 	
@@ -211,13 +217,13 @@ function b_getGameTurnCount($game_id) {
 
 function b_makeTurn($game_id) {
 	$query1="UPDATE `orders` SET `made_turns`=made_turns+1,`turn_now`=0 WHERE game_id=$game_id and `turn_now`=1";
-	$result1 = mysql_query($query1);
+	$result1 = select_query($query1);
 	
 	$query="SELECT made_turns, user_id FROM `orders` WHERE game_id=$game_id ORDER BY order_number";
-	$result = mysql_query($query);
+	$result = select_query($query);
 	$min=999; // TODO поставить ограничение на максимальное кол-во ходов
 	$user_id=0;
-	while ($row = mysql_fetch_assoc($result)) {
+	while ($row = $result->fetch_assoc()) {
 		$turn=$row["made_turns"];	
 		if($turn<$min){
 			$min=$turn;
@@ -226,7 +232,7 @@ function b_makeTurn($game_id) {
 	}
 	
 	$query2="UPDATE `orders` SET `turn_now`=1 WHERE game_id=$game_id and user_id=$user_id";
-	$result2 = mysql_query($query2);
+	$result2 = select_query($query2);
 	
 	return $min;
 }
