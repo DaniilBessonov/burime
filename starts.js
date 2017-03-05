@@ -7,7 +7,7 @@ function go(page) {
 function callAPI(method, params, func){
 	console.log("["+method+"] start",params);
 		$.get("service.php", {method: method, params: JSON.stringify(params)}, function(data){
-			//console.log(data);
+			console.log(data);
 			var d=JSON.parse(data);
 			console.log(method+" finished with result", d);
 			if(d.result_type=='error'){

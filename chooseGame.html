@@ -1,37 +1,39 @@
-<html>
+п»ї<html>
 	<head>
 		<script src='starts.js'></script>
 		<script src="../js/jquery-3.0.0.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/styles.css">
-		<title>Присоедениться</title>
+		<title>РџСЂРёСЃРѕРµРґРµРЅРёС‚СЊСЃСЏ</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width"/>
 		<style>
 			td { width:250px; }
 		</style>
 	</head>
 	<body>
-		<!-- Версия для любого экрана -->
+		<!-- Р’РµСЂСЃРёСЏ РґР»СЏ Р»СЋР±РѕРіРѕ СЌРєСЂР°РЅР° -->
 		<center>
-			<h1>Присоедениться</h1>
+			<h1>РџСЂРёСЃРѕРµРґРµРЅРёС‚СЊСЃСЏ</h1>
 			<h2>
-				Доступные игры:
+				Р”РѕСЃС‚СѓРїРЅС‹Рµ РёРіСЂС‹:
 			</h2>
-			<p class="small">Кликните по строчке, чтобы перейти в зал ождания игры</p>
+			<p class="small">РљР»РёРєРЅРёС‚Рµ РїРѕ СЃС‚СЂРѕС‡РєРµ, С‡С‚РѕР±С‹ РїРµСЂРµР№С‚Рё РІ Р·Р°Р» РѕР¶РґР°РЅРёСЏ РёРіСЂС‹</p>
 			<table id="games">
 				<tr>
 					<td>
 						<h2>
-						Тема игры
+						РўРµРјР° РёРіСЂС‹
 						</h2>
 					</td>
 					<td>
 						<h2>
-						Админ игры
+						РђРґРјРёРЅ РёРіСЂС‹
 						</h2>
 					</td>
 				</tr>
 			</table>
 			<button class='red' onclick="go('index.html')">
-				Назад
+				РќР°Р·Р°Рґ
 			</button>
 		</center>
 		<script>
@@ -41,7 +43,7 @@
 					callAPI('getActiveGames', undefined, function(result){
 						console.log(result);
 						for (var i=0; i<result.length; i++){
-								 /* TODO Выводить ник админа игры
+								 /* TODO Р’С‹РІРѕРґРёС‚СЊ РЅРёРє Р°РґРјРёРЅР° РёРіСЂС‹
 								 callAPI('getActiveGames', result[i].id, function(resultAdmin){
 									console.log(resultAdmin);
 								}); */

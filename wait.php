@@ -1,4 +1,4 @@
-<html>
+﻿<html>
 	<?php
 	include_once "validations.php";
 	session_start();
@@ -13,6 +13,8 @@
 		<script src='starts.js'></script>
 		<script src="../js/jquery-3.0.0.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/styles.css">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width"/>
 		<title>Ожидание</title>
 		<?php 
 			connectDB();

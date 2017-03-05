@@ -1,25 +1,27 @@
-<html>
+п»ї<html>
 	<head>
 		<script src='starts.js'></script>
 		<script src="../js/jquery-3.0.0.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/styles.css">
-		<title>Конец игры</title>
+		<title>РљРѕРЅРµС† РёРіСЂС‹</title>
 		<link rel="shortcut icon" href="//yastatic.net/morda-logo/i/ya_favicon_ru.png">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width"/>
 		<style>
 
 		</style>
 	</head>
 	<body class="game">
 		<center>
-			<h1>Конец игры</h1>
+			<h1>РљРѕРЅРµС† РёРіСЂС‹</h1>
 			<h2>
-				Конечный текст:
+				РљРѕРЅРµС‡РЅС‹Р№ С‚РµРєСЃС‚:
 			</h2>
 			<div id='end'>
-				Тут будет конечный текст.
+				РўСѓС‚ Р±СѓРґРµС‚ РєРѕРЅРµС‡РЅС‹Р№ С‚РµРєСЃС‚.
 			</div>
 			<button class='red' onclick="go('index.html')">
-				Выход
+				Р’С‹С…РѕРґ
 			</button>
 		</center>
 	<script>

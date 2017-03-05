@@ -1,5 +1,5 @@
 <?php
-include_once "burime.php";
+include_once "burime.php";include_once "burime.php";
 
 function success($param, $scenario = 0){
 	return array('result_type'=>'success', 'result'=>$param, 'scenario'=>$scenario);
@@ -58,6 +58,7 @@ function isLoginExist($login){
 
 //Hовое
 function getMyGames(){
+	error_log("getMyGames start", 0);
 	$user_id=getUserIdFromSession();
 	return success(b_getMyGames($user_id));
 }

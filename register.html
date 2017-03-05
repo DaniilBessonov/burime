@@ -1,9 +1,11 @@
-<html>
+﻿<html>
 	<head>
 		<script src='starts.js'></script>
 		<script src="../js/jquery-3.0.0.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/styles.css">
 		<title>Регистрация</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width"/>
 		<style>
 			
 		</style>
@@ -21,7 +23,7 @@
 			<br /><button class="small" onclick="go('login.html')">
 				У меня уже есть аккаунт. Войти
 			</button>
-			<br /><button class='green' onclick="register($('#login').val(), $('#password').val(), $('#passwordRepeat').val()); /*go('index.html')*/">
+			<br /><button class='green' onclick="register($('#login').val(), $('#password').val(), $('#passwordRepeat').val()); go('index.html')">
 				Готово
 			</button>
 			<br /><button class='red' onclick="go('index.html')">

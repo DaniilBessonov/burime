@@ -1,28 +1,30 @@
-<html>
+п»ї<html>
 	<head>
 		<script src='starts.js'></script>
 		<script src="../js/jquery-3.0.0.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/styles.css">
-		<title>Создать игру</title>
+		<title>РЎРѕР·РґР°С‚СЊ РёРіСЂСѓ</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width"/>
 		<style>
 			td { border:none }
 		</style>
 	</head>
 	<body>
-		<!-- Версия для любого экрана -->
+		<!-- Р’РµСЂСЃРёСЏ РґР»СЏ Р»СЋР±РѕРіРѕ СЌРєСЂР°РЅР° -->
 		<center>
-			<h1>Создать игру</h1>
-			<input id="topic" placeholder="Тема игры">
+			<h1>РЎРѕР·РґР°С‚СЊ РёРіСЂСѓ</h1>
+			<input id="topic" placeholder="РўРµРјР° РёРіСЂС‹">
 			</input>
-			<br /><input id="players_count" placeholder="Кол-во игроков">
+			<br /><input id="players_count" placeholder="РљРѕР»-РІРѕ РёРіСЂРѕРєРѕРІ">
 			</input>
-			<br /><input id="turns_count" placeholder="Кол-во ходов на 1 игрока">
+			<br /><input id="turns_count" placeholder="РљРѕР»-РІРѕ С…РѕРґРѕРІ РЅР° 1 РёРіСЂРѕРєР°">
 			</input>
 			<br /><button class="red" onclick="go('index.html')">
-				Назад
+				РќР°Р·Р°Рґ
 			</button>
 			<button class="green" onclick="addGame($('#topic').val(), $('#players_count').val(), $('#turns_count').val())">
-				Создать игру
+				РЎРѕР·РґР°С‚СЊ РёРіСЂСѓ
 			</button>
 		</center>
 		<script>

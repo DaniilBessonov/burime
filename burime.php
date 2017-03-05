@@ -1,4 +1,5 @@
 <?php
+include_once "connection.php";
 $mysqli = null;
 
 function b_register($login, $password){	
@@ -16,16 +17,11 @@ function b_login($login, $password){
 	if($num_rows==0) {			
 		return 0;
 	} else {
-		while ($row = $result->fetch_assoc()) {
+		while ($row = mysqli_fetch_assoc($result)) {
 			return $row["id"];				
 		}	
 		return 0;
 	}
-}
-
-function connectDB() {
-	global $mysqli;
-	$mysqli = new mysqli('localhost', 'root', '', 'burime'); /* адрес, логи, пароль */
 }
 
 function disconnectDB(){
@@ -105,12 +101,16 @@ function b_isMeAdmin($game_id){
 
 //Функция, которая не получилась
 function b_getMyGames($user_id) {
+	error_log("b_getMyGames start", 0);
 	$query="SELECT topic, id FROM `games` WHERE id in ( SELECT game_id FROM `orders` WHERE user_id=$user_id ) and finished=0";
+	error_log("query=".$query, 0);
 	$result = select_query($query);
+	error_log("result ready", 0);
 	$text=array();
-	while($row = $result->fetch_assoc()) {
+	while($row = mysqli_fetch_assoc($result)) {
 		array_push($text, array("id"=>$row["id"], "topic"=>$row["topic"]));
 	}
+	error_log("b_getMyGames finish", 0);
 	return $text;
 }
 
@@ -144,7 +144,7 @@ function b_getAllText($game_id){
 	$query="SELECT text FROM `stories` WHERE game_id=$game_id order by order_number";
 	$result = select_query($query);
 	$text=array();
-	while($res = $result->fetch_assoc()) {
+	while($res = mysqli_fetch_assoc($result)) {
 		$text[] = $res['text'];
 	}
 	return $text;
@@ -170,7 +170,7 @@ function b_getActiveGames() {
 	$games=array();
 	$query="SELECT `games`.id, topic, login FROM `games` join `users` on admin_id=`users`.id WHERE finished=0 and players_ready=0";
 	$result = select_query($query);
-	while ($row = $result->fetch_assoc()) {
+	while ($row = mysqli_fetch_assoc($result)) {
 		 array_push($games, array("id"=>$row["id"], "topic"=>$row["topic"], "login"=>$row["login"]));				
 	}
 	return $games;
@@ -187,7 +187,7 @@ function b_getOrder($game_id) {
 	$result = select_query($query);
 	
 	$table=array();
-	while($row = $result->fetch_assoc()) {
+	while($row = mysqli_fetch_assoc($result)) {
 		array_push( $table, array("login"=>$row["login"], "turn_now"=>$row["turn_now"], "user_id"=>$row["user_id"]) );
 	}
 	
@@ -223,7 +223,7 @@ function b_makeTurn($game_id) {
 	$result = select_query($query);
 	$min=999; // TODO поставить ограничение на максимальное кол-во ходов
 	$user_id=0;
-	while ($row = $result->fetch_assoc()) {
+	while ($row = mysqli_fetch_assoc($result)) {
 		$turn=$row["made_turns"];	
 		if($turn<$min){
 			$min=$turn;

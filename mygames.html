@@ -1,29 +1,31 @@
-<html>
+п»ї<html>
 	<head>
 		<script src='starts.js'></script>
 		<script src="../js/jquery-3.0.0.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/styles.css">
-		<title>Мои игры</title>
+		<title>РњРѕРё РёРіСЂС‹</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width"/>
 		<style>
 		</style>
 	</head>
 	<body>
-		<!-- Версия для любого экрана -->
+		<!-- Р’РµСЂСЃРёСЏ РґР»СЏ Р»СЋР±РѕРіРѕ СЌРєСЂР°РЅР° -->
 		<center>
 		<h1>
-			Игры, в которые вы сейчас играете:
+			РРіСЂС‹, РІ РєРѕС‚РѕСЂС‹Рµ РІС‹ СЃРµР№С‡Р°СЃ РёРіСЂР°РµС‚Рµ:
 		</h1>
 		<table id="mygames">
 		</table>
 		<button class='button red' onclick="go('index.html')">
-			Назад
+			РќР°Р·Р°Рґ
 		</button>
 		</center>
 		<script>
 				getMyGames();
 				
 				function getMyGames() {
-					callAPI('getMyGames', undefined, function(result){
+				callAPI('getMyGames', undefined, function(result){
 						console.log(result);
 						for (var i=0; i<result.length; i++){
 								var html = '<a href="wait.php?game_id='+result[i].id+'">'+result[i].topic+'</a>';
