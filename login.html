@@ -3,19 +3,17 @@
 		<script src='starts.js'></script>
 		<script src="../js/jquery-3.0.0.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/styles.css">
+		<link rel="shortcut icon" href="ico.ico">
 		<title>Вход</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width"/>
-		<style>
-		</style>
 	</head>
 	<body class="login-off login-page">
-		<!-- Версия для любого экрана -->
 		<center>
 			<h1>Вход</h1>
 			<br/><input id="login" placeholder="Логин">
 			</input>
-			<br /><input id="password" placeholder="Пароль">
+			<br /><input id="password" type="password" placeholder="Пароль">
 			</input>
 			<br /><button class="small" onclick="go('register.html')">
 				У меня нет аккаунта. Создать аккаунт
@@ -34,7 +32,6 @@
 					callAPI('login', params, function(){
 						go('index.html');
 					});
-					// TODO Проверка сесии или что-то подобное.
 				}
 		</script>
 	</body>

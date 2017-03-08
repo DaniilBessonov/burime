@@ -3,22 +3,19 @@
 		<script src='starts.js'></script>
 		<script src="../js/jquery-3.0.0.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/styles.css">
+		<link rel="shortcut icon" href="ico.ico">
 		<title>Регистрация</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width"/>
-		<style>
-			
-		</style>
 	</head>
 	<body class="login-off">
 		<center>
-			<!-- Версия для любого экрана -->
 			<h1>Регистрация</h1>
 			<input id="login" placeholder="Логин">
 			</input>
-			<br /><input id="password" placeholder="Пароль">
+			<br /><input type="password" id="password" placeholder="Пароль">
 			</input>
-			<br /><input id="passwordRepeat" placeholder="Повтор пароля">
+			<br /><input type="password" id="passwordRepeat" placeholder="Повтор пароля">
 			</input>
 			<br /><button class="small" onclick="go('login.html')">
 				У меня уже есть аккаунт. Войти
@@ -39,7 +36,6 @@
 					} else {
 						showError('Пароли не совпадают.');
 					}
-					//Проврка сессии или что-то подобное.
 				}
 		</script>
 	</body>

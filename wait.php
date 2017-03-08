@@ -15,6 +15,7 @@
 		<link rel="stylesheet" type="text/css" href="css/styles.css">
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width"/>
+		<link rel="shortcut icon" href="ico.ico">
 		<title>Ожидание</title>
 		<?php 
 			connectDB();
@@ -25,7 +26,6 @@
 		?>
 	</head>
 	<body class="game">
-		<!-- Версия для любого экрана -->
 		<center>
 			<h1>Ожидание</h1>
 			<h2>
@@ -34,10 +34,6 @@
 			<table id="order"></table>
 			<div id="interaction">
 				<?php
-				
-				// TODO не добавляет надпись "Вы уже в игре" при заходе на страницу
-				
-				//$game_id=$_GET['game_id'];
 				$user_id=getUserIdFromSession();
 				
 				connectDB();
@@ -51,9 +47,6 @@
 				disconnectDB();
 				
 				?>
-				<!--<button id="intoGame" class='green' class='goAway' onclick="addPlayer(game_id)">
-					Вступить в игру
-				</button> -->
 			</div>
 			<br /><button class="red small" onclick="if(confirm('Сейчас идет игра. Вы действительно хотите выйти в главное меню?')){go('index.html')}">
 				В главное меню
@@ -65,11 +58,9 @@
 			time();
 			
 			function getOrder(game_id) {
-				console.log("game_id=", game_id);
 				var params={game_id:game_id};
 				callAPI('getOrder', params, function(result){
 							console.log("result from getOrder", result);
-							//преобразование result в массив
 							$('#order').children().remove();
 							for (var i=0; i<result.length; i++){
 								var html = result[i].login;
@@ -87,7 +78,6 @@
 			}
 			
 			function addPlayer(game_id){
-				console.log("game_id=", game_id);
 				var params={game_id: game_id};
 				callAPI('addPlayer', params, function(result){
 					alert(result);

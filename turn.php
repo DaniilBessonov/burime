@@ -3,9 +3,8 @@
 		<script src='starts.js'></script>
 		<script src="../js/jquery-3.0.0.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/styles.css">
+		<link rel="shortcut icon" href="ico.ico">
 		<title>Ход игрока</title>
-		<style>
-		</style>
 	</head>
 	<body class="game">
 		<center>

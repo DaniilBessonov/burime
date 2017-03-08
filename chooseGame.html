@@ -4,6 +4,7 @@
 		<script src="../js/jquery-3.0.0.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/styles.css">
 		<title>Присоедениться</title>
+		<link rel="shortcut icon" href="ico.ico">
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width"/>
 		<style>
@@ -11,7 +12,6 @@
 		</style>
 	</head>
 	<body>
-		<!-- Версия для любого экрана -->
 		<center>
 			<h1>Присоедениться</h1>
 			<h2>
@@ -41,12 +41,7 @@
 				
 				function getActiveGames() {
 					callAPI('getActiveGames', undefined, function(result){
-						console.log(result);
 						for (var i=0; i<result.length; i++){
-								 /* TODO Выводить ник админа игры
-								 callAPI('getActiveGames', result[i].id, function(resultAdmin){
-									console.log(resultAdmin);
-								}); */
 								var html = '<td><a>'+result[i].topic+'</a></td><td>'+result[i].login+'</td>';
 								$('#games').append('<tr class="trans" onclick="go(\'wait.php?game_id='+result[i].id+'\')">'+html+'</tr>');
 							}	

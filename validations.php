@@ -56,7 +56,6 @@ function isLoginExist($login){
 	}
 }
 
-//Hовое
 function getMyGames(){
 	error_log("getMyGames start", 0);
 	$user_id=getUserIdFromSession();
@@ -68,7 +67,19 @@ function addGame($params) {
 	$players_count=$params->players_count;
 	$turns_count=$params->turns_count;
 	$user_id=getUserIdFromSession();
-
+	
+	if(strlen($topic)>80 or strlen($topic)<3) {
+		return wrong('Длинна темы игры должна быть от 3 до 80 символов.');
+	}
+	
+	if($players_count<3){
+		return wrong('Кол-во игроков указано неверно. Оно может быть не меньше трёх.');
+	}
+	
+	if($turns_count<1 or $turns_count>1000){
+		return wrong('Кол-во ходов на игрока указано неверно. Оно не может быть меньше одного или больше тысячи.');
+	}
+	
 	$game_id=b_addGame($topic, $players_count, $turns_count);
 	b_addPlayer($game_id, $user_id);
 	
@@ -88,8 +99,13 @@ function addText($params) {
 	if(!b_isUserActive($game_id, $user_id)) {
 		return wrong('Сейчас не ваш ход.');
 	} 
+	
 	if(b_isGameFinished($game_id)) {
 		return wrong('Данная игра уже закончалась.');
+	}
+	
+	if(strlen($text)>80 or strlen($text)<1){
+		return wrong('Недопустимая длинна строки (допустимая от 1 до 80 символов).');
 	}
 	b_addText($game_id, $text);	
 	
@@ -190,15 +206,11 @@ function isUserActive($params) {
 	$game_id=$params->game_id;
 	$user_id=$params->user_id;
 	
-	//validations
-	
 	return b_isUserActive($game_id, $user_id);
 }
 
 function isGameFinished($params){
 	$game_id=$params->game_id;
-	
-	//validations
 	
 	return b_isGameFinished($game_id);
 }

@@ -17,7 +17,6 @@ if ((isset($_SESSION['isAuthorized']) && $_SESSION['isAuthorized']==1) || $metho
 	disconnectDB();
 } else {
 	$result=wrong('Необходимо авторизоваться', 1);
-  // redirect to login page header('Location: http://www.example.com/');
 }
 echo json_encode($result);
 

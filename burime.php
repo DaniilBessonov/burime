@@ -78,7 +78,6 @@ function b_isUserInGame($game_id, $user_id) {
 	return $result;
 }
 
-//Новая функция
 function b_getAdmin($game_id) {
 	$query="SELECT admin_id FROM `games` WHERE id=$game_id";
 	$result = mysql_query_single($query);
@@ -86,7 +85,6 @@ function b_getAdmin($game_id) {
 	return $admin_name;
 }
 
-//Новая функция
 function b_getAdminId($game_id) {
 	$query="SELECT admin_id FROM `games` WHERE id=$game_id";
 	$result = mysql_query_single($query);
@@ -99,7 +97,6 @@ function b_isMeAdmin($game_id){
 	return $user_id==$admin_id;
 }
 
-//Функция, которая не получилась
 function b_getMyGames($user_id) {
 	error_log("b_getMyGames start", 0);
 	$query="SELECT topic, id FROM `games` WHERE id in ( SELECT game_id FROM `orders` WHERE user_id=$user_id ) and finished=0";
@@ -221,7 +218,7 @@ function b_makeTurn($game_id) {
 	
 	$query="SELECT made_turns, user_id FROM `orders` WHERE game_id=$game_id ORDER BY order_number";
 	$result = select_query($query);
-	$min=999; // TODO поставить ограничение на максимальное кол-во ходов
+	$min=1000;
 	$user_id=0;
 	while ($row = mysqli_fetch_assoc($result)) {
 		$turn=$row["made_turns"];	

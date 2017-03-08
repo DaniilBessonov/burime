@@ -3,13 +3,11 @@
 		<script src='starts.js'></script>
 		<script src="../js/jquery-3.0.0.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/styles.css">
+		<link rel="shortcut icon" href="ico.ico">
 		<title>Конец игры</title>
 		<link rel="shortcut icon" href="//yastatic.net/morda-logo/i/ya_favicon_ru.png">
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width"/>
-		<style>
-
-		</style>
 	</head>
 	<body class="game">
 		<center>
@@ -32,7 +30,6 @@
 					callAPI('getAllText', params, function(result){
 						console.log("4 result from getAllText", result);
 						var html="<p>"+result.join("</p><p>")+"</p>";
-						//console.log(html);
 						$('#end').html(html);			
 					});
 					
