@@ -4,8 +4,6 @@
 .mobile h1 { font-size: 40px; margin-top:50px }
 
 .goAway { top:3px; right:3px; width:250px; height:60px; }
-.game #loginPassword { zoom:0.4; transition: 2s linear; }
-.game #loginPassword:hover  { -webkit-transform: scale(2); transform: scale(2); right:180px; top:90px}
 .exitFromGame { height:25px; width:200px; font-size:15px; opacity: 0.3; }
 .exitFromGame:hover { opacity: 0.8; }
 a { text-decoration:none; font-size:25px; color:black; }

@@ -70,11 +70,11 @@ function addGame($params) {
 	
 	if(strlen($topic)>80 or strlen($topic)<3) {
 		return wrong('Длинна темы игры должна быть от 3 до 80 символов.');
-	}
+	} 
 	
-	if($players_count<3){
+	/* if($players_count<3){
 		return wrong('Кол-во игроков указано неверно. Оно может быть не меньше трёх.');
-	}
+	} */
 	
 	if($turns_count<1 or $turns_count>1000){
 		return wrong('Кол-во ходов на игрока указано неверно. Оно не может быть меньше одного или больше тысячи.');
